@@ -721,11 +721,11 @@ class Trainer:
 
             epoch_pbar = tqdm(epoch_iterator, desc="Iteration", disable=disable_tqdm)
             for step, inputs in enumerate(epoch_iterator):
-                print("inputs type:")
-                print(type(inputs))
-                print(type(inputs.keys()))
-                print(inputs)
-                print(inputs['input_ids'])
+#                 print("inputs type:")
+#                 print(type(inputs))
+#                 print(type(inputs.keys()))
+#                 print(inputs)
+#                 print(inputs['input_ids'])
                 # Skip past any already trained steps if resuming training
                 if steps_trained_in_current_epoch > 0:
                     steps_trained_in_current_epoch -= 1
