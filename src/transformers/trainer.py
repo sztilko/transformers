@@ -218,9 +218,6 @@ class Trainer:
         optimizers: Tuple[torch.optim.Optimizer, torch.optim.lr_scheduler.LambdaLR] = (None, None),
         **kwargs,
     ):
-        print("HEEEEEEEY")
-        logger.info("Write thisssss")
-        return
         if args is None:
             logger.info("No `TrainingArguments` passed, using the current path as `output_dir`.")
             args = TrainingArguments("tmp_trainer")
@@ -594,6 +591,7 @@ class Trainer:
             trial (:obj:`optuna.Trial` or :obj:`Dict[str, Any]`, `optional`):
                 The trial run or the hyperparameter dictionary for hyperparameter search.
         """
+        logger.info("Running troubleshooting training.")
         # This might change the seed so needs to run first.
         self._hp_search_setup(trial)
 
@@ -723,7 +721,11 @@ class Trainer:
 
             epoch_pbar = tqdm(epoch_iterator, desc="Iteration", disable=disable_tqdm)
             for step, inputs in enumerate(epoch_iterator):
-
+                logger.info("inputs type:")
+                logger.info(type(inputs))
+                logger.info(inputs.shape)
+                logger.info(inputs)
+                return
                 # Skip past any already trained steps if resuming training
                 if steps_trained_in_current_epoch > 0:
                     steps_trained_in_current_epoch -= 1
